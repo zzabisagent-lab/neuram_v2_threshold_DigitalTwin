@@ -1,0 +1,3 @@
+# Keep line endings deterministic (LF) so vendored-engine hashing (REG-2) is
+# stable across platforms.
+* text=auto eol=lf

@@ -1,0 +1,16 @@
+name: neuram_v2_threshold_digital_twin
+description: >-
+  Minimal digital twin for the frozen neuram_v2_threshold engine. A learning
+  phototaxis / Braitenberg differential-steering closed loop (sense -> brain ->
+  motor -> move -> re-sense) that exercises the engine's two synaptic thresholds
+  in an embodied setting. The engine is vendored read-only under engine/ and is
+  never modified. Shares no code or git history with the engine repo or with
+  neuram_companion.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.8.1
+
+# No external dependencies. The engine is used via vendored path imports
+# (engine/), not as a pub dependency, so the twin clones and runs offline.

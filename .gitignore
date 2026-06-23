@@ -1,0 +1,16 @@
+# Dart / Pub
+.dart_tool/
+.packages
+build/
+pubspec.lock
+
+# Twin run artifacts
+*.twin.json
+/run/
+
+# Editor / OS
+.idea/
+.vscode/
+*.iml
+Thumbs.db
+desktop.ini
