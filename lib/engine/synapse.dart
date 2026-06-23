@@ -1,5 +1,5 @@
 //VND VENDORED — read-only mirror of neuram_v2_threshold @ 45ad1c0008af70ea8d901c93b7acf58a4979301f. Do not edit. The twin must not modify the engine.
-//VND sha256(body, LF, excl //VND lines)=09a49022725df604de7b351804ea0d6c6589349f09fc18f869174ed7b2ee89df
+//VND body fnv1a-64 = 80c79139d9f8f31c (REG-2 verifies against lib/engine/VENDOR_MANIFEST.json)
 import 'dart:math' as math;
 
 import 'params.dart';

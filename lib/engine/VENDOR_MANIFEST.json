@@ -1,11 +1,12 @@
 {
   "engineRepo": "https://github.com/zzabisagent-lab/neuram_v2_threshold",
   "engineSha": "45ad1c0008af70ea8d901c93b7acf58a4979301f",
+  "hash": "fnv1a-64 over body, LF-normalized, excluding //VND lines",
   "files": {
-    "lib/engine/params.dart": "661d13ec04973608abaae5447d377f00454e7b6b014ea24269f0c7e95fe7a1f2",
-    "lib/engine/synapse.dart": "09a49022725df604de7b351804ea0d6c6589349f09fc18f869174ed7b2ee89df",
-    "lib/engine/neuron.dart": "4b84ad13c61d222e4adba191877763ea9a2939249d04ee69b43ebbffc9f99897",
-    "lib/engine/connectome.dart": "bb4df22a2be9fe574829073ac7c0fd6872ded9c1249468035373b3d6636ae0b9",
-    "lib/engine/sim.dart": "9d03b14a5bbe38ee647c748a3d5c72cfa92fa8803e02ebbe3edfed8b26a0170a"
+    "lib/engine/params.dart": "da1f14c3ee3fdeab",
+    "lib/engine/synapse.dart": "80c79139d9f8f31c",
+    "lib/engine/neuron.dart": "6f03bd8d66877136",
+    "lib/engine/connectome.dart": "ab37511847b205e5",
+    "lib/engine/sim.dart": "9eb93ca864548485"
   }
 }

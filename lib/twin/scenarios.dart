@@ -53,7 +53,14 @@ class TwinHarness {
   double probeScore({double dist = probeDist}) =>
       (_probe(true, dist).score + _probe(false, dist).score) / 2;
 
+  /// Let the neural state rest before a fresh probe so leftover activation `a`
+  /// from prior stimulation decays (>> tauA). Without this, residual activation
+  /// would spuriously fire on the first probe step regardless of light level.
+  static const double settleTime = 2.0; // >> tauA (0.3)
+  void _settle() => brain.t += settleTime;
+
   TrialResult _probe(bool leftSide, double dist, {bool on = true}) {
+    _settle();
     _probePose(leftSide, dist, on: on);
     return loop.runTrial(learn: false);
   }
@@ -63,8 +70,10 @@ class TwinHarness {
   /// over both sides. This is the faithful read-out of the pruned (reverted) state.
   static const int responseSteps = 10;
   double immediateResponse({double dist = probeDist}) {
+    _settle();
     _probePose(true, dist);
     final l = loop.runTrial(learn: false, steps: responseSteps).score;
+    _settle();
     _probePose(false, dist);
     final r = loop.runTrial(learn: false, steps: responseSteps).score;
     return (l + r) / 2;

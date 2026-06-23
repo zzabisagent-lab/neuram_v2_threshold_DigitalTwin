@@ -14,7 +14,7 @@ This twin depends on the **frozen** `neuram_v2_threshold` engine. The engine is
 - Files under `lib/engine/` are a **read-only mirror**. The twin **must not modify the
   engine** — it calls only the engine's public API.
 - Each vendored file carries a 2-line `//VND …` header recording the pinned SHA and
-  the SHA-256 of its body (LF-normalized, excluding the `//VND` lines). Apart from
+  a pure-Dart FNV-1a-64 hash of its body (LF-normalized, excluding the `//VND` lines; no external crypto dependency). Apart from
   that header, every vendored file is **byte-identical** to the engine at the pinned
   commit (verified by REG-2 against `lib/engine/VENDOR_MANIFEST.json`).
 - If the engine is found to be missing something the twin needs, the twin **reports
@@ -22,6 +22,6 @@ This twin depends on the **frozen** `neuram_v2_threshold` engine. The engine is
 
 ## Verifying the vendor
 
-`lib/engine/VENDOR_MANIFEST.json` lists the SHA-256 of each vendored body. The bench
+`lib/engine/VENDOR_MANIFEST.json` lists the FNV-1a-64 hash of each vendored body. The bench
 `bin/twin_test.dart` (REG-2) recomputes those hashes from the files on disk and
 fails if any engine file was altered beyond its header.
