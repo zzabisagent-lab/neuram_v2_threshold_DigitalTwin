@@ -1,0 +1,4 @@
+day,phase,netA,deltaDay,wLL,wLR,wRL,wRR,wCrossed,wUncrossed,activeCount,functionalCount,formed,pruned,cMean,saturated,done,transition
+1,build,0.8798,,0.0000,0.3584,0.3584,0.0000,0.3584,0.0000,4,2,2,0,3.1164,false,false,
+2,build,0.9091,0.0294,0.0000,0.4577,0.4577,0.0000,0.4577,0.0000,4,2,0,0,6.1186,false,false,
+3,build,0.9239,0.0148,0.0000,0.5186,0.5186,0.0000,0.5186,0.0000,4,2,0,0,9.0108,false,false,
