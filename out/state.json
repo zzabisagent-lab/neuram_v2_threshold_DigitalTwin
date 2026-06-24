@@ -1,0 +1,37 @@
+{
+  "version": 2,
+  "iteration": 3,
+  "phase": "build",
+  "phaseStartIter": 1,
+  "lastRunAtUtc": "2026-06-24T10:48:47.883622Z",
+  "history": [
+    {
+      "iteration": 1,
+      "phase": "build",
+      "netA": 0.8797536591622594,
+      "runAtUtc": "2026-06-24T10:48:42.088145Z"
+    },
+    {
+      "iteration": 2,
+      "phase": "build",
+      "netA": 0.9091428979453204,
+      "runAtUtc": "2026-06-24T10:48:45.003623Z"
+    },
+    {
+      "iteration": 3,
+      "phase": "build",
+      "netA": 0.9239330590874665,
+      "runAtUtc": "2026-06-24T10:48:47.883622Z"
+    }
+  ],
+  "transitions": [],
+  "brainT": 57.600000000000335,
+  "connectome": "{\n  \"version\": 1,\n  \"synapses\": [\n    {\n      \"id\": 0,\n      \"w\": 0.0,\n      \"a\": 1.7052850789420482,\n      \"tLast\": 56.00000000000031,\n      \"c\": 0.0,\n      \"active\": true,\n      \"tLastFire\": 56.00000000000031,\n      \"firedCount\": 35,\n      \"lastFired\": true,\n      \"formAcc\": 0.0,\n      \"tLastForm\": 0.0\n    },\n    {\n      \"id\": 1,\n      \"w\": 0.5186010324105933,\n      \"a\": 1.7052850789420482,\n      \"tLast\": 56.00000000000031,\n      \"c\": 18.02168103449598,\n      \"active\": true,\n      \"tLastFire\": 56.00000000000031,\n      \"firedCount\": 35,\n      \"lastFired\": true,\n      \"formAcc\": 0.0,\n      \"tLastForm\": 0.0\n    },\n    {\n      \"id\": 2,\n      \"w\": 0.5186010324105933,\n      \"a\": 1.5185533912710842,\n      \"tLast\": 55.90000000000031,\n      \"c\": 18.02168103449598,\n      \"active\": true,\n      \"tLastFire\": 55.90000000000031,\n      \"firedCount\": 36,\n      \"lastFired\": true,\n      \"formAcc\": 0.0,\n      \"tLastForm\": 0.0\n    },\n    {\n      \"id\": 3,\n      \"w\": 0.0,\n      \"a\": 1.5185533912710842,\n      \"tLast\": 55.90000000000031,\n      \"c\": 0.0,\n      \"active\": true,\n      \"tLastFire\": 55.90000000000031,\n      \"firedCount\": 36,\n      \"lastFired\": true,\n      \"formAcc\": 0.0,\n      \"tLastForm\": 0.0\n    }\n  ]\n}",
+  "config": {
+    "dayReps": 8,
+    "k": 3,
+    "epsilon": 0.02,
+    "maxIterations": 30,
+    "functionalW": 0.1
+  }
+}
