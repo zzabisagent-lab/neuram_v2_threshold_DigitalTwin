@@ -1,9 +1,9 @@
 {
   "version": 2,
-  "iteration": 26,
+  "iteration": 27,
   "phase": "reversal",
   "phaseStartIter": 15,
-  "lastRunAtUtc": "2026-06-25T21:54:20.198815Z",
+  "lastRunAtUtc": "2026-06-25T23:49:03.778240Z",
   "history": [
     {
       "iteration": 1,
@@ -160,6 +160,12 @@
       "phase": "reversal",
       "netA": 0.409972389191963,
       "runAtUtc": "2026-06-25T21:54:20.198815Z"
+    },
+    {
+      "iteration": 27,
+      "phase": "reversal",
+      "netA": 0.3748090347696981,
+      "runAtUtc": "2026-06-25T23:49:03.778240Z"
     }
   ],
   "transitions": [
@@ -170,8 +176,8 @@
       "reason": "saturation"
     }
   ],
-  "brainT": 499.20000000003876,
-  "connectome": "{\n  \"version\": 1,\n  \"synapses\": [\n    {\n      \"id\": 0,\n      \"w\": 0.7475641145179875,\n      \"a\": 0.19715102424944758,\n      \"tLast\": 495.0000000000378,\n      \"c\": 61.417573544440636,\n      \"active\": true,\n      \"tLastFire\": 487.8000000000366,\n      \"firedCount\": 21,\n      \"lastFired\": false,\n      \"formAcc\": 0.0,\n      \"tLastForm\": 0.0\n    },\n    {\n      \"id\": 1,\n      \"w\": 0.6472494563477801,\n      \"a\": 0.19715102424944758,\n      \"tLast\": 495.0000000000378,\n      \"c\": 105.6527954976827,\n      \"active\": true,\n      \"tLastFire\": 487.8000000000366,\n      \"firedCount\": 21,\n      \"lastFired\": false,\n      \"formAcc\": 0.0,\n      \"tLastForm\": 0.0\n    },\n    {\n      \"id\": 2,\n      \"w\": 0.6472494563477801,\n      \"a\": 0.2433769448453414,\n      \"tLast\": 499.10000000003873,\n      \"c\": 105.6527954976827,\n      \"active\": true,\n      \"tLastFire\": 495.800000000038,\n      \"firedCount\": 21,\n      \"lastFired\": false,\n      \"formAcc\": 0.0,\n      \"tLastForm\": 0.0\n    },\n    {\n      \"id\": 3,\n      \"w\": 0.7475641145179875,\n      \"a\": 0.2433769448453414,\n      \"tLast\": 499.10000000003873,\n      \"c\": 61.417573544440636,\n      \"active\": true,\n      \"tLastFire\": 495.800000000038,\n      \"firedCount\": 21,\n      \"lastFired\": false,\n      \"formAcc\": 0.0,\n      \"tLastForm\": 0.0\n    }\n  ]\n}",
+  "brainT": 518.4000000000422,
+  "connectome": "{\n  \"version\": 1,\n  \"synapses\": [\n    {\n      \"id\": 0,\n      \"w\": 0.7623769554392409,\n      \"a\": 0.180444379571456,\n      \"tLast\": 514.1000000000412,\n      \"c\": 65.39976402941426,\n      \"active\": true,\n      \"tLastFire\": 506.80000000004003,\n      \"firedCount\": 19,\n      \"lastFired\": false,\n      \"formAcc\": 0.0,\n      \"tLastForm\": 0.0\n    },\n    {\n      \"id\": 1,\n      \"w\": 0.6384252549656491,\n      \"a\": 0.180444379571456,\n      \"tLast\": 514.1000000000412,\n      \"c\": 108.0139846596925,\n      \"active\": true,\n      \"tLastFire\": 506.80000000004003,\n      \"firedCount\": 19,\n      \"lastFired\": false,\n      \"formAcc\": 0.0,\n      \"tLastForm\": 0.0\n    },\n    {\n      \"id\": 2,\n      \"w\": 0.6384252549656491,\n      \"a\": 0.27926056154770856,\n      \"tLast\": 518.3000000000421,\n      \"c\": 108.0139846596925,\n      \"active\": true,\n      \"tLastFire\": 514.8000000000413,\n      \"firedCount\": 19,\n      \"lastFired\": false,\n      \"formAcc\": 0.0,\n      \"tLastForm\": 0.0\n    },\n    {\n      \"id\": 3,\n      \"w\": 0.7623769554392409,\n      \"a\": 0.27926056154770856,\n      \"tLast\": 518.3000000000421,\n      \"c\": 65.39976402941426,\n      \"active\": true,\n      \"tLastFire\": 514.8000000000413,\n      \"firedCount\": 19,\n      \"lastFired\": false,\n      \"formAcc\": 0.0,\n      \"tLastForm\": 0.0\n    }\n  ]\n}",
   "config": {
     "dayReps": 8,
     "k": 3,
