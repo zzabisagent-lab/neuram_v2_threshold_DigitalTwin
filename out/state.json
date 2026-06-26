@@ -1,0 +1,218 @@
+{
+  "version": 2,
+  "iteration": 31,
+  "phase": "done",
+  "phaseStartIter": 15,
+  "lastRunAtUtc": "2026-06-26T03:49:03.396074Z",
+  "history": [
+    {
+      "iteration": 1,
+      "phase": "build",
+      "netA": 0.8797536591622594,
+      "runAtUtc": "2026-06-24T10:48:42.088145Z"
+    },
+    {
+      "iteration": 2,
+      "phase": "build",
+      "netA": 0.9091428979453204,
+      "runAtUtc": "2026-06-24T10:48:45.003623Z"
+    },
+    {
+      "iteration": 3,
+      "phase": "build",
+      "netA": 0.9239330590874665,
+      "runAtUtc": "2026-06-24T10:48:47.883622Z"
+    },
+    {
+      "iteration": 4,
+      "phase": "build",
+      "netA": 0.9009339742360822,
+      "runAtUtc": "2026-06-24T11:49:03.806372Z"
+    },
+    {
+      "iteration": 5,
+      "phase": "build",
+      "netA": 0.8980279061176889,
+      "runAtUtc": "2026-06-24T12:49:03.996378Z"
+    },
+    {
+      "iteration": 6,
+      "phase": "build",
+      "netA": 0.8918964402362921,
+      "runAtUtc": "2026-06-24T13:49:06.077656Z"
+    },
+    {
+      "iteration": 7,
+      "phase": "build",
+      "netA": 0.925391619455278,
+      "runAtUtc": "2026-06-24T14:49:03.981466Z"
+    },
+    {
+      "iteration": 8,
+      "phase": "build",
+      "netA": 0.8905554716028621,
+      "runAtUtc": "2026-06-24T15:49:03.941263Z"
+    },
+    {
+      "iteration": 9,
+      "phase": "build",
+      "netA": 0.9279053959205529,
+      "runAtUtc": "2026-06-24T22:35:39.197836Z"
+    },
+    {
+      "iteration": 10,
+      "phase": "build",
+      "netA": 0.9233496281358753,
+      "runAtUtc": "2026-06-24T23:49:03.785072Z"
+    },
+    {
+      "iteration": 11,
+      "phase": "build",
+      "netA": 0.8769500602583636,
+      "runAtUtc": "2026-06-25T00:49:03.784830Z"
+    },
+    {
+      "iteration": 12,
+      "phase": "build",
+      "netA": 0.8917231025877008,
+      "runAtUtc": "2026-06-25T01:49:03.835216Z"
+    },
+    {
+      "iteration": 13,
+      "phase": "build",
+      "netA": 0.8724671906556651,
+      "runAtUtc": "2026-06-25T02:49:03.862457Z"
+    },
+    {
+      "iteration": 14,
+      "phase": "build",
+      "netA": 0.8686787130364555,
+      "runAtUtc": "2026-06-25T03:49:03.934688Z"
+    },
+    {
+      "iteration": 15,
+      "phase": "reversal",
+      "netA": 0.7744536669694568,
+      "runAtUtc": "2026-06-25T04:49:04.249383Z"
+    },
+    {
+      "iteration": 16,
+      "phase": "reversal",
+      "netA": 0.8198290481618806,
+      "runAtUtc": "2026-06-25T05:49:03.993491Z"
+    },
+    {
+      "iteration": 17,
+      "phase": "reversal",
+      "netA": 0.8436449821631771,
+      "runAtUtc": "2026-06-25T06:49:04.152319Z"
+    },
+    {
+      "iteration": 18,
+      "phase": "reversal",
+      "netA": 0.8039759090999756,
+      "runAtUtc": "2026-06-25T07:49:04.025582Z"
+    },
+    {
+      "iteration": 19,
+      "phase": "reversal",
+      "netA": 0.7489301295183055,
+      "runAtUtc": "2026-06-25T08:49:03.963062Z"
+    },
+    {
+      "iteration": 20,
+      "phase": "reversal",
+      "netA": 0.710144868423332,
+      "runAtUtc": "2026-06-25T09:49:03.997541Z"
+    },
+    {
+      "iteration": 21,
+      "phase": "reversal",
+      "netA": 0.6958740835596121,
+      "runAtUtc": "2026-06-25T10:49:04.088606Z"
+    },
+    {
+      "iteration": 22,
+      "phase": "reversal",
+      "netA": 0.6289358457251889,
+      "runAtUtc": "2026-06-25T11:49:04.237220Z"
+    },
+    {
+      "iteration": 23,
+      "phase": "reversal",
+      "netA": 0.5922783878158009,
+      "runAtUtc": "2026-06-25T12:49:04.458350Z"
+    },
+    {
+      "iteration": 24,
+      "phase": "reversal",
+      "netA": 0.5080611803527285,
+      "runAtUtc": "2026-06-25T13:49:04.104137Z"
+    },
+    {
+      "iteration": 25,
+      "phase": "reversal",
+      "netA": 0.4577522412494913,
+      "runAtUtc": "2026-06-25T14:49:04.148867Z"
+    },
+    {
+      "iteration": 26,
+      "phase": "reversal",
+      "netA": 0.409972389191963,
+      "runAtUtc": "2026-06-25T21:54:20.198815Z"
+    },
+    {
+      "iteration": 27,
+      "phase": "reversal",
+      "netA": 0.3748090347696981,
+      "runAtUtc": "2026-06-25T23:49:03.778240Z"
+    },
+    {
+      "iteration": 28,
+      "phase": "reversal",
+      "netA": 0.3388217472516136,
+      "runAtUtc": "2026-06-26T00:49:03.263860Z"
+    },
+    {
+      "iteration": 29,
+      "phase": "reversal",
+      "netA": 0.31027964786797624,
+      "runAtUtc": "2026-06-26T01:49:03.471624Z"
+    },
+    {
+      "iteration": 30,
+      "phase": "reversal",
+      "netA": 0.2977393181958925,
+      "runAtUtc": "2026-06-26T02:49:03.411249Z"
+    },
+    {
+      "iteration": 31,
+      "phase": "reversal",
+      "netA": 0.27956113257820847,
+      "runAtUtc": "2026-06-26T03:49:03.396074Z"
+    }
+  ],
+  "transitions": [
+    {
+      "from": "build",
+      "to": "reversal",
+      "iteration": 14,
+      "reason": "saturation"
+    },
+    {
+      "from": "reversal",
+      "to": "done",
+      "iteration": 31,
+      "reason": "max-iterations"
+    }
+  ],
+  "brainT": 595.2000000000487,
+  "connectome": "{\n  \"version\": 1,\n  \"synapses\": [\n    {\n      \"id\": 0,\n      \"w\": 0.8141813756227735,\n      \"a\": 0.18215202627229088,\n      \"tLast\": 590.6000000000477,\n      \"c\": 79.92175338485949,\n      \"active\": true,\n      \"tLastFire\": 583.1000000000464,\n      \"firedCount\": 14,\n      \"lastFired\": false,\n      \"formAcc\": 0.0,\n      \"tLastForm\": 0.0\n    },\n    {\n      \"id\": 1,\n      \"w\": 0.6048578606487003,\n      \"a\": 0.18215202627229088,\n      \"tLast\": 590.6000000000477,\n      \"c\": 116.62461340945298,\n      \"active\": true,\n      \"tLastFire\": 583.1000000000464,\n      \"firedCount\": 14,\n      \"lastFired\": false,\n      \"formAcc\": 0.0,\n      \"tLastForm\": 0.0\n    },\n    {\n      \"id\": 2,\n      \"w\": 0.6048578606487003,\n      \"a\": 0.31445427844342255,\n      \"tLast\": 595.1000000000487,\n      \"c\": 116.62461340945298,\n      \"active\": true,\n      \"tLastFire\": 591.1000000000478,\n      \"firedCount\": 14,\n      \"lastFired\": false,\n      \"formAcc\": 0.0,\n      \"tLastForm\": 0.0\n    },\n    {\n      \"id\": 3,\n      \"w\": 0.8141813756227735,\n      \"a\": 0.31445427844342255,\n      \"tLast\": 595.1000000000487,\n      \"c\": 79.92175338485949,\n      \"active\": true,\n      \"tLastFire\": 591.1000000000478,\n      \"firedCount\": 14,\n      \"lastFired\": false,\n      \"formAcc\": 0.0,\n      \"tLastForm\": 0.0\n    }\n  ]\n}",
+  "config": {
+    "dayReps": 8,
+    "k": 3,
+    "epsilon": 0.02,
+    "maxIterations": 30,
+    "functionalW": 0.1
+  }
+}

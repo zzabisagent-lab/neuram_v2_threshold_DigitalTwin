@@ -1,0 +1,25 @@
+{
+  "iteration": 31,
+  "runAtUtc": "2026-06-26T03:49:03.396074Z",
+  "runAtLocal": "2026-06-26T12:49:03.396074",
+  "phase": "reversal",
+  "netA": 0.27956113257820847,
+  "deltaDay": 0.01817818561768403,
+  "w": {
+    "LL": 0.8141813756227735,
+    "LR": 0.6048578606487003,
+    "RL": 0.6048578606487003,
+    "RR": 0.8141813756227735
+  },
+  "wCrossed": 0.6048578606487003,
+  "wUncrossed": 0.8141813756227735,
+  "activeCount": 4,
+  "functionalCount": 4,
+  "formed": 0,
+  "pruned": 0,
+  "cMean": 98.27318339715623,
+  "saturated": false,
+  "done": true,
+  "doneReason": "max-iterations",
+  "transition": null
+}
