@@ -1,17 +1,17 @@
 # Threshold campaign — STATUS
 
-- Iteration: **30** (1 call = 1 iteration; hourly schedule, calendar-independent)
-- Run at: 2026-06-26T11:49:03.411249 (local) / 2026-06-26T02:49:03.411249Z (UTC)
+- Iteration: **31** (1 call = 1 iteration; hourly schedule, calendar-independent)
+- Run at: 2026-06-26T12:49:03.396074 (local) / 2026-06-26T03:49:03.396074Z (UTC)
 - Phase run: **reversal**
-- Current phase (next run): **reversal**
-- netA (signed approach): **+0.298** (+ approach, − avoid)
-- Δ: **0.013** (saturate: < ε=0.02 for K=3 iters)
+- Current phase (next run): **done**
+- netA (signed approach): **+0.280** (+ approach, − avoid)
+- Δ: **0.018** (saturate: < ε=0.02 for K=3 iters)
 - Saturated this phase: **false**
-- Done: **false**
+- Done: **true** (max-iterations)
 
 ## Strengths
-- crossed (LR,RL): **0.613**, uncrossed (LL,RR): **0.802**
-- active: 4/4, functional (w≥0.1): 4/4, formed: 0, pruned: 0, mean c: 95.54
+- crossed (LR,RL): **0.605**, uncrossed (LL,RR): **0.814**
+- active: 4/4, functional (w≥0.1): 4/4, formed: 0, pruned: 0, mean c: 98.27
 
 ## netA history
 
@@ -47,5 +47,6 @@
 | 28 | reversal | +0.339 |
 | 29 | reversal | +0.310 |
 | 30 | reversal | +0.298 |
+| 31 | reversal | +0.280 |
 
 _Pre-registered (§4/§5): dayReps=8, K=3, ε=0.02, maxIterations=30. Engine + twin core frozen; campaign code additive only. seed_verification/ holds the initial 3-iteration verification._
