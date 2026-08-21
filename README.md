@@ -40,9 +40,12 @@ lib/twin/
 bin/
   twin_run.dart    deterministic scenarios -> learning/decay/reversal summary
   twin_test.dart   pre-registered REG/T pass/fail bench (exit != 0 on any fail)
+  telemetry.dart   event-driven NDJSON emission (off by default)
 docs/
   PHASE0_api.md    the engine public-API surface the twin relies on
   TWIN_RESULTS.md  measured results
+  TELEMETRY.md     telemetry stream schema
+  RESULTS.md       pre-registered telemetry criteria, measured
 ```
 
 ## Run
@@ -52,6 +55,33 @@ dart analyze
 dart run bin/twin_run.dart    # scenarios + docs/TWIN_RESULTS.md style summary
 dart run bin/twin_test.dart   # PASS/FAIL table; exit code != 0 on any FAIL
 ```
+
+## Watch a run happen
+
+The summary tells you where a run ended up, not how it got there. `--telemetry`
+emits an event stream — stimulus, synapse state, plasticity, motor output — as
+NDJSON on stdout, one JSON object per line:
+
+```bash
+dart run bin/twin_run.dart --telemetry                    # scenario: learning
+dart run bin/twin_run.dart --telemetry --scenario=decay   # also form/prune events
+```
+
+Emission is **passive**. The engine computes every time decay lazily, on touch, so
+polling it would wake the very state it wanted to read. Every emission happens at a
+moment the twin was already touching that state, and nothing is touched in order to
+emit — which is why quiet intervals are quiet in the stream. That silence is the
+visible form of the zero-idle principle, not a gap in the instrumentation.
+
+Telemetry is off by default, costs one null check per site when off, and does not
+change any result. With it on, the stream owns stdout and the human summary moves to
+stderr. See [docs/TELEMETRY.md](docs/TELEMETRY.md) for the schema and
+[docs/RESULTS.md](docs/RESULTS.md) for the verification.
+
+Live views — a stream server, a dependency-free web dashboard, a terminal UI and
+reproducibility tools — live in
+[`neuram_observatory`](https://github.com/zzabisagent-lab/neuram_observatory),
+which reads these lines and links nothing.
 
 Pure Dart 3.8.1, offline, deterministic (fixed seed), no external dependencies
 (the engine is used via vendored path imports).
