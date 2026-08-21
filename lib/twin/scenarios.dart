@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'brain.dart';
 import 'loop.dart';
+import 'telemetry.dart';
 import 'twin_params.dart';
 import 'world.dart';
 
@@ -45,13 +46,44 @@ class TwinHarness {
   /// One reinforcement presentation on the given side (forward or reversed goal).
   void encounter(bool leftSide, {bool reversed = false}) {
     _teachPose(leftSide);
-    brain.presentOnce(world.sense(), reversed: reversed);
+    final sn = world.sense();
+    if (tlm != null) tlm!.sense(brain.t, sn, world);
+    brain.presentOnce(sn, reversed: reversed);
+  }
+
+  /// Running trial index for telemetry boundaries (monotonic across a run).
+  int _trial = 0;
+  bool _inTrial = false;
+
+  /// Mark [body] as one telemetry trial, unless a trial is already open.
+  ///
+  /// A probe run inside a learning trial belongs to that trial rather than opening
+  /// one of its own, so trials stay a flat sequence. A probe run on its own — the
+  /// before/after readings around a pruning interval, say — becomes a trial in its
+  /// own right, which is what puts a score on the learning curve next to the prune
+  /// marker that explains it. Emission only: [body] runs identically either way.
+  R _asTrial<R>(R Function() body, double? Function(R) scoreOf) {
+    final tm = tlm;
+    if (tm == null || _inTrial) return body();
+    final trial = _trial++;
+    _inTrial = true;
+    tm.trialStart(brain.t, trial);
+    final R r;
+    try {
+      r = body();
+    } finally {
+      _inTrial = false;
+    }
+    tm.trialEnd(brain.t, trial, scoreOf(r), brain.wMap);
+    return r;
   }
 
   /// Average approach score over a left-light and a right-light probe (no learning),
   /// so the measurement is symmetric in the two crossed synapses.
-  double probeScore({double dist = probeDist}) =>
-      (_probe(true, dist).score + _probe(false, dist).score) / 2;
+  double probeScore({double dist = probeDist}) => _asTrial(
+    () => (_probe(true, dist).score + _probe(false, dist).score) / 2,
+    (s) => s,
+  );
 
   /// Let the neural state rest before a fresh probe so leftover activation `a`
   /// from prior stimulation decays (>> tauA). Without this, residual activation
@@ -69,7 +101,7 @@ class TwinHarness {
   /// before a pruned path can structurally re-form and rescue behavior. Averaged
   /// over both sides. This is the faithful read-out of the pruned (reverted) state.
   static const int responseSteps = 10;
-  double immediateResponse({double dist = probeDist}) {
+  double immediateResponse({double dist = probeDist}) => _asTrial(() {
     _settle();
     _probePose(true, dist);
     final l = loop.runTrial(learn: false, steps: responseSteps).score;
@@ -77,7 +109,7 @@ class TwinHarness {
     _probePose(false, dist);
     final r = loop.runTrial(learn: false, steps: responseSteps).score;
     return (l + r) / 2;
-  }
+  }, (s) => s);
 
   /// Probe once and report (score, maxMotor) — used by T-①.
   ({double score, double maxMotor}) probe(
@@ -94,9 +126,14 @@ class TwinHarness {
   List<double> learnCurve(int trials) {
     final curve = <double>[];
     for (var k = 0; k < trials; k++) {
-      curve.add(probeScore());
-      encounter(true);
-      encounter(false);
+      curve.add(
+        _asTrial(() {
+          final score = probeScore();
+          encounter(true);
+          encounter(false);
+          return score;
+        }, (s) => s),
+      );
     }
     return curve;
   }
@@ -104,8 +141,11 @@ class TwinHarness {
   /// Reinforce both sides [n] times with no probing (just build strength).
   void train(int n, {bool reversed = false}) {
     for (var k = 0; k < n; k++) {
-      encounter(true, reversed: reversed);
-      encounter(false, reversed: reversed);
+      // A reinforcement round runs no scored probe, so it has no score.
+      _asTrial(() {
+        encounter(true, reversed: reversed);
+        encounter(false, reversed: reversed);
+      }, (_) => null);
     }
   }
 

@@ -1,4 +1,5 @@
 import 'brain.dart';
+import 'telemetry.dart';
 import 'twin_params.dart';
 import 'world.dart';
 
@@ -23,8 +24,10 @@ class ClosedLoop {
   /// reinforces the synapses that fired on this step's sensing.
   (double, double) stepOnce({required bool learn, double rewardScale = 1.0}) {
     final sn = world.sense();
+    if (tlm != null) tlm!.sense(brain.t, sn, world);
     final (vL, vR) = brain.drive(sn);
     world.step(vL, vR);
+    if (tlm != null) tlm!.act(brain.t, vL, vR, world);
     if (learn) brain.reward(sn, scale: rewardScale);
     brain.tick();
     return (vL, vR);

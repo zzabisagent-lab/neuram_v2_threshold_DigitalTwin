@@ -2,6 +2,7 @@ import '../engine/connectome.dart';
 import '../engine/sim.dart';
 import '../engine/synapse.dart';
 import 'body.dart';
+import 'telemetry.dart';
 import 'twin_params.dart';
 import 'world.dart';
 
@@ -65,17 +66,51 @@ class Brain {
   List<Synapse> get leftMotorInputs => [ll.syn, rl.syn];
   List<Synapse> get rightMotorInputs => [lr.syn, rr.syn];
 
+  /// Current strengths, keyed by edge name (for trial/run boundary telemetry).
+  Map<String, double> get wMap => {for (final e in edges) e.name: e.syn.w};
+
+  // --- telemetry wrappers ----------------------------------------------------
+  //
+  // These add emission around an engine call the twin was already making; the call
+  // itself, its arguments and its result are unchanged. When telemetry is off the
+  // wrapper is one null check and the original call.
+
+  /// Deliver a sensory pulse and, if observed, record the input event.
+  bool _pulse(Edge e, double intensity) {
+    final tm = tlm;
+    if (tm == null) return body.senseInto(e.syn, t, intensity);
+    final s = e.syn;
+    final tLast0 = s.tLast;
+    final active0 = s.active;
+    final fired = body.senseInto(s, t, intensity);
+    tm.pulsed(e.name, t, s, tLast0, active0, fired, sim.params);
+    return fired;
+  }
+
+  /// Deliver a teacher signal and, if observed, record the plasticity event.
+  double _teach(Edge e, double tt, double m) {
+    final tm = tlm;
+    if (tm == null) return sim.teach(e.syn, tt, m);
+    final s = e.syn;
+    final w0 = s.w;
+    final c0 = s.c;
+    final tLast0 = s.tLast;
+    final dw = sim.teach(s, tt, m);
+    tm.plast(e.name, tt, s, w0, c0, tLast0, m, sim.params);
+    return dw;
+  }
+
   /// Deliver sensory pulses (threshold ①) and decode motor wheel speeds from the
   /// gated propagation (threshold ②). A dark sensor (intensity 0) generates no
   /// event (event-driven). Returns (vL, vR).
   (double, double) drive(Sensors sn) {
     if (sn.left > _eps) {
-      body.senseInto(ll.syn, t, sn.left);
-      body.senseInto(lr.syn, t, sn.left);
+      _pulse(ll, sn.left);
+      _pulse(lr, sn.left);
     }
     if (sn.right > _eps) {
-      body.senseInto(rl.syn, t, sn.right);
-      body.senseInto(rr.syn, t, sn.right);
+      _pulse(rl, sn.right);
+      _pulse(rr, sn.right);
     }
     final vL = body.motor(leftMotorInputs, t);
     final vR = body.motor(rightMotorInputs, t);
@@ -119,11 +154,11 @@ class Brain {
       if (e.src != bright) continue;
       final isCrossed = e.tgt == promote; // serves the (forward) goal
       if (!reversed) {
-        if (isCrossed) sim.teach(e.syn, t + tp.teachDelta, mMag * scale);
+        if (isCrossed) _teach(e, t + tp.teachDelta, mMag * scale);
       } else {
         // reversed goal: reward ipsilateral (uncrossed), depress crossed
         final m = (isCrossed ? -mMag : mMag) * scale;
-        sim.teach(e.syn, t + tp.teachDelta, m);
+        _teach(e, t + tp.teachDelta, m);
       }
     }
   }
@@ -134,12 +169,12 @@ class Brain {
   void presentOnce(Sensors sn, {bool reversed = false}) {
     for (var rep = 0; rep < 2; rep++) {
       if (sn.left > _eps) {
-        body.senseInto(ll.syn, t, sn.left);
-        body.senseInto(lr.syn, t, sn.left);
+        _pulse(ll, sn.left);
+        _pulse(lr, sn.left);
       }
       if (sn.right > _eps) {
-        body.senseInto(rl.syn, t, sn.right);
-        body.senseInto(rr.syn, t, sn.right);
+        _pulse(rl, sn.right);
+        _pulse(rr, sn.right);
       }
       t += tp.teachDelta + 0.03;
     }
@@ -152,7 +187,10 @@ class Brain {
   List<String> pruneAll() {
     final pruned = <String>[];
     for (final e in edges) {
-      if (sim.prune(e.syn, t)) pruned.add(e.name);
+      if (sim.prune(e.syn, t)) {
+        pruned.add(e.name);
+        if (tlm != null) tlm!.pruned(e.name, t, e.syn);
+      }
     }
     return pruned;
   }
